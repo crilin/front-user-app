@@ -19,24 +19,31 @@ export class ValidadoresService {
       return S?S-1:'k';
   }
 
-  checkRut(){
-    return (formGroup: FormGroup) => {
-      const rutCompleto = formGroup.controls['rut'];
+  checkRut(rutName:string){
 
-      console.log("rutCompleto " + rutCompleto);
-      var tmp 	= rutCompleto.value.split('-');
-		  var digv	= tmp[1];
-		  var rut 	= tmp[0];
+    return (formgroup: FormGroup) => {
+      const rutControl = formgroup.controls[rutName];
 
+      var tmp 	= rutControl.value.split('-');
+      var digv	= tmp[1];
+      var rut 	= tmp[0];
       if ( digv == 'K' ) digv = 'k' ;
+      console.log("rut " + rut);
 
-      if (this.dv(rut) == digv ){
-        rutCompleto.setErrors(null);
-      } else {
-        rutCompleto.setErrors({noRutValido:true});
+      if(this.dv(parseInt(rut)) == digv){
+        rutControl.setErrors(null);
+      }else {
+        rutControl.setErrors({rutNoValido: true});
       }
 
     }
+
+    // var tmp 	= rutCompleto.split('-');
+    // var digv	= tmp[1];
+    // var rut 	= tmp[0];
+
+    // if ( digv == 'K' ) digv = 'k' ;
+
   }
 
 

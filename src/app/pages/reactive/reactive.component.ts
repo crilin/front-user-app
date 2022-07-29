@@ -40,8 +40,9 @@ construirFormulario(){
     nombre: new FormControl('', [Validators.required, Validators.minLength(2)] ),
     apellido: new FormControl('', [Validators.required, Validators.minLength(2)] ),
     mail: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ),
-    rut : new FormControl('', [Validators.required, Validators.pattern('^[0-9]+[-]{1}[0-9kK]{1}$')]),
-    validators: this.validadores.checkRut()
+    rut : new FormControl('', [Validators.required, Validators.pattern('^[0-9]+[-]{1}[0-9kK]{1}$')])
+    },{
+     validators: this.validadores.checkRut('rut')
   });
 }
 
