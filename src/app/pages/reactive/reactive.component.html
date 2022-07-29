@@ -1,0 +1,76 @@
+<h4>Formulario <small> Reactivo </small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="formulario" (ngSubmit)="enviar()">
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label class="col-2 col-form-label">Nombre</mat-label>
+    <input type="text" matInput formControlName="nombre" [errorStateMatcher]="matcher"
+          placeholder="Ej: Sofia Belen">
+    <mat-hint>Ingrese su nombre</mat-hint>
+    <mat-error *ngIf="controlInput('nombre') && !inputRequerido('nombre')">
+      Por favor ingrese un nombre válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('nombre')">
+      El nombre es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input type="email" matInput formControlName="apellido" [errorStateMatcher]="matcher"
+          placeholder="Ej: González">
+    <mat-hint>Ingrese su apellido</mat-hint>
+    <mat-error *ngIf="controlInput('apellido') && !inputRequerido('apellido')">
+      Por favor ingrese un apellido válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('apellido')">
+      El apellido es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="mail" [errorStateMatcher]="matcher"
+          placeholder="ejemplo@correo.com">
+    <mat-hint>Ingrese su correo</mat-hint>
+    <mat-error *ngIf="controlInput('mail') && !inputRequerido('mail')">
+      Por favor ingrese un correo válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('mail')">
+      El correo es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>RUT</mat-label>
+    <input type="rut" matInput formControlName="rut" [errorStateMatcher]="matcher"
+          placeholder="Ej: 12345678-9">
+    <mat-hint>Ingrese su rut incluyendo digito verificador</mat-hint>
+    <mat-error *ngIf="controlInput('rut') && !inputRequerido('rut')">
+      Por favor ingrese un rut válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('rut')">
+      El rut es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Continuar
+      </button>
+    </div>
+  </div>
+</form>
