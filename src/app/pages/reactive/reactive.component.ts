@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { UserModel } from 'src/app/models/user.model';
+import { userResponseModel } from 'src/app/models/userResponse.model';
+import { UserService } from 'src/app/services/user.service';
 import { ValidadoresService } from '../../services/validadores.service';
 
 
@@ -16,6 +19,8 @@ export class ReactiveComponent implements OnInit {
 
   formulario!: FormGroup;
 
+  usuario: UserModel = new UserModel();
+  userResponse: userResponseModel = new userResponseModel();
 
   //Valida si el correo es valido
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -25,7 +30,8 @@ export class ReactiveComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(private builder: FormBuilder,
-              private validadores: ValidadoresService) {
+              private validadores: ValidadoresService,
+              private userServ: UserService) {
 
     this.construirFormulario();
    }
@@ -67,9 +73,10 @@ construirFormulario(){
  * Funcion guardar
  */
   enviar() {
-    console.log(this.formulario);
 
     if (this.formulario.invalid) {
+
+      console.log(this.formulario);
 
       return Object.values( this.formulario.controls).forEach( control => {
 
@@ -82,6 +89,17 @@ construirFormulario(){
 
         }
       })
+    } else{
+
+
+      this.usuario.name = this.formulario.get('nombre')!.value;
+      this.usuario.email = this.formulario.get('mail')?.value;
+      this.userServ.guardarUser(this.usuario).subscribe(
+        (user:any) => {
+
+        console.log("Respuesta = " , user);
+        this.userResponse = user;
+      });
     }
   }
 

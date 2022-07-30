@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveComponent } from './pages/reactive/reactive.component';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReactiveComponent } from './pages/reactive/reactive.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

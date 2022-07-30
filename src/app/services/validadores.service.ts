@@ -28,8 +28,7 @@ export class ValidadoresService {
       var digv	= tmp[1];
       var rut 	= tmp[0];
       if ( digv == 'K' ) digv = 'k' ;
-      console.log("rut " + rut);
-
+      
       if(this.dv(parseInt(rut)) == digv){
         rutControl.setErrors(null);
       }else {
