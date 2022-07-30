@@ -20,15 +20,16 @@
 <div class="form-group row">
 
   <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Apellido</mat-label>
-    <input type="email" matInput formControlName="apellido" [errorStateMatcher]="matcher"
-          placeholder="Ej: González">
-    <mat-hint>Ingrese su apellido</mat-hint>
-    <mat-error *ngIf="controlInput('apellido') && !inputRequerido('apellido')">
-      Por favor ingrese un apellido válido
+    <mat-label>Password</mat-label>
+    <input type="password" id="password" matInput formControlName="password" [errorStateMatcher]="matcher"
+          placeholder="1 Mayúscula, 7 caracteres y 1 número" >
+          <span toggle="#password-field" (click)="cambiar()" class="fa fa-eye field-icon toggle-password"></span>
+    <mat-hint>Ingrese su contraseña</mat-hint>
+    <mat-error *ngIf="controlInput('password') && !inputRequerido('password')">
+      La contraseña no cumple con el formato establecido
     </mat-error>
-    <mat-error *ngIf="inputRequerido('apellido')">
-      El apellido es <strong>obligatorio</strong>
+    <mat-error *ngIf="inputRequerido('password')">
+      La contraseña es <strong>obligatoria</strong>
     </mat-error>
   </mat-form-field>
 </div>
@@ -45,6 +46,54 @@
     </mat-error>
     <mat-error *ngIf="inputRequerido('mail')">
       El correo es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Telefono</mat-label>
+    <input type="text" matInput formControlName="phone" [errorStateMatcher]="matcher"
+          placeholder="Ej: 123456789">
+    <mat-hint>Ingrese un número de Telefono</mat-hint>
+    <mat-error *ngIf="controlInput('phone') && !inputRequerido('phone')">
+      Por favor ingrese un telefono válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('phone')">
+      El Telefono es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Ciudad</mat-label>
+    <input type="text" matInput formControlName="citycode" [errorStateMatcher]="matcher"
+          placeholder="Ej: 9">
+    <mat-hint>Ingrese su número de Codigo Ciudad</mat-hint>
+    <mat-error *ngIf="controlInput('citycode') && !inputRequerido('citycode')">
+      Por favor ingrese un codigo válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('citycode')">
+      El codigo es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Pais</mat-label>
+    <input type="text" matInput formControlName="countrycode" [errorStateMatcher]="matcher"
+          placeholder="Ej: 56">
+    <mat-hint>Ingrese el Codigo país</mat-hint>
+    <mat-error *ngIf="controlInput('countrycode') && !inputRequerido('countrycode')">
+      Por favor ingrese un codigo válido
+    </mat-error>
+    <mat-error *ngIf="inputRequerido('countrycode')">
+      El codigo pais es <strong>obligatorio</strong>
     </mat-error>
   </mat-form-field>
 </div>

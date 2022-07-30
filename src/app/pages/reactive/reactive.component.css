@@ -7,3 +7,11 @@
 .example-full-width {
   width: 50%;
 }
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -8px;
+  position: relative;
+  z-index: 2;
+}

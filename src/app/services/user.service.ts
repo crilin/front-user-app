@@ -28,8 +28,8 @@ export class UserService {
     }
   ]
     }
-    console.log("userData " + userData);
-    return this.http.post<userResponseModel>(`${this.url}`,userData,
+    console.log("userData " + user);
+    return this.http.post<userResponseModel>(`${this.url}`,user,
             {
               headers: new HttpHeaders({
                   'Content-Type':  'application/json',
